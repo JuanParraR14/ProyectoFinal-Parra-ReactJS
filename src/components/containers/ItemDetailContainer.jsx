@@ -2,7 +2,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { db } from "../../firebase";
-import ItemDetail from "../presentational/Item";
+import ItemDetail from "../ItemDetail";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -10,12 +10,12 @@ const ItemDetailContainer = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const docRef = doc(db, "productos", id);
+    const docRef = doc(db, "products", id);
 
     getDoc(docRef)
       .then((resp) => {
         if (resp.exists()) {
-          setItem({ ...resp.data(), firebaseId: resp.id });
+          setItem({ id: resp.id, ...resp.data() });
         }
       })
       .finally(() => setLoading(false));
@@ -23,7 +23,7 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   return (
-    <div>
+    <div container mt-4>
       {loading ? <p>Cargando...</p> : item ? <ItemDetail {...item} /> : <p>Producto no encontrado</p>}
     </div>
   );

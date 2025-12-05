@@ -2,6 +2,8 @@ import React from "react";
 import Item from "./Item";
 
 export default function ItemList({ items }) {
+  console.log("Items recibidos por ItemList:", items);
+
   return (
     <div className="row">
       {items.map((producto) => (

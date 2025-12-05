@@ -22,18 +22,15 @@ const ItemListContainer = ({ greeting }) => {
 
     getDocs(q)
       .then((resp) => {
-        const products = resp.docs.map((doc) => ({ ...doc.data(), firebaseId: doc.id }));
-
-        console.log("Productos obtenidos", products);
+        const products = resp.docs.map((doc) => ({ firebaseId: doc.id, ...doc.data() }));
         setItems(products);
       })
-      .catch((err) => console.error("ERROR FIREBASE: ", err))
       .finally(() => setLoading(false));
 
   }, [categoriaId]);
 
   return (
-    <div>
+    <div className="container mt-4">
       <h2>{greeting}</h2>
       {loading ? <p>Cargando...</p> : <ItemList items={items} />}
     </div>
