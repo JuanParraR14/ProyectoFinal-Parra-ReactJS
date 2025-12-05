@@ -15,7 +15,7 @@ export default function Item({ producto }) {
           <h5 className="card-title">{producto.nombre}</h5>
           <p className="card-text">Precio: ${producto.precio}</p>
           <div className="mt-auto">
-            <Link to={`/detail/${producto.id}`} className="btn btn-primary">
+            <Link to={`/detail/${producto.firebaseId}`} className="btn btn-primary">
               Ver detalle
             </Link>
           </div>

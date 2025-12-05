@@ -1,46 +1,43 @@
-import React, { useEffect, useState } from "react";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { products as mockProducts } from "../../data/products";
+import { db } from "../../firebase";
 import ItemList from "../presentational/ItemList";
 
-function fetchProducts() {
-   return new Promise((resolve) => {
-      setTimeout(() => resolve(mockProducts), 600);
-   });
+const ItemListContainer = ({ greeting }) => {
+  const { categoriaId } = useParams();
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+
+    const productsRef = collection(db, "products");
+
+    let q = productsRef;
+
+    if (categoriaId) {
+      q = query(productsRef, where("categoria", "==", categoriaId));
+    }
+
+    getDocs(q)
+      .then((resp) => {
+        const products = resp.docs.map((doc) => ({ ...doc.data(), firebaseId: doc.id }));
+
+        console.log("Productos obtenidos", products);
+        setItems(products);
+      })
+      .catch((err) => console.error("ERROR FIREBASE: ", err))
+      .finally(() => setLoading(false));
+
+  }, [categoriaId]);
+
+  return (
+    <div>
+      <h2>{greeting}</h2>
+      {loading ? <p>Cargando...</p> : <ItemList items={items} />}
+    </div>
+  );
 };
 
-export default function ItemListContainer({ greeting }) {
-   const [items, setItems] = useState([]);
-   const [loading, setLoading] = useState(true);
-   const { categoriaId } = useParams();
-
-   useEffect(() => {
-      setLoading(true);
-      fetchProducts()
-         .then((data) => {
-            if (categoriaId) {
-               const filtered = data.filter(
-                  (p) => p.categoria.toLowerCase() === categoriaId.toLocaleLowerCase()
-               );
-               setItems(filtered);
-            }  else {
-               setItems(data);
-            }
-         })
-      .finally(() => setLoading(false));   
-   }, [categoriaId]);
-
-   return (
-      <div className="container mt-4">
-         <h2 className="mb-4">{greeting}</h2>
-
-         {loading ? (
-         <p>Cargando productos...</p>
-         ) : items.length === 0 ? (
-         <p>No hay productos en esta categoría.</p>
-         ) : (
-         <ItemList items={items} />
-         )}
-      </div>
-   );
-};
+export default ItemListContainer;

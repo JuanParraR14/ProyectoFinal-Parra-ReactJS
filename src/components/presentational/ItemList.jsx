@@ -5,7 +5,7 @@ export default function ItemList({ items }) {
   return (
     <div className="row">
       {items.map((producto) => (
-        <Item key={producto.id} producto={producto} />
+        <Item key={producto.firebaseId} producto={producto} />
       ))}
     </div>
   );
