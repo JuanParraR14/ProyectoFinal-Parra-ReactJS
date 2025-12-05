@@ -8,7 +8,7 @@ import ItemListContainer from "./components/containers/ItemListContainer";
 import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
 
-function app() {
+function App() {
    return (
       <>
          <NavBar />
@@ -24,4 +24,4 @@ function app() {
    );
 }
 
-export default app;
+export default App;
