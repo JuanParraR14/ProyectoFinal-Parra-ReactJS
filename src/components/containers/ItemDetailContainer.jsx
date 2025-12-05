@@ -24,7 +24,7 @@ const ItemDetailContainer = () => {
 
   return (
     <div container mt-4>
-      {loading ? <p>Cargando...</p> : item ? <ItemDetail {...item} /> : <p>Producto no encontrado</p>}
+      {loading ? <p>Cargando...</p> : item ? <ItemDetail item={item} /> : <p>Producto no encontrado</p>}
     </div>
   );
 };
