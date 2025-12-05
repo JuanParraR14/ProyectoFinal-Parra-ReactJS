@@ -9,22 +9,6 @@ ________________________________________
 •	JavaScript (93.8%), CSS (4.5%), HTML (1.7%).
 •	ESLint – Configuración para mantener buenas prácticas de código.
 ________________________________________
-📂 Estructura del proyecto
-ProyectoFinal-Parra-ReactJS/
-│
-├── public/              # Archivos públicos y estáticos
-├── src/                 # Código fuente principal
-│   ├── components/      # Componentes reutilizables
-│   ├── pages/           # Vistas principales
-│   ├── context/         # Contextos globales (ej. carrito)
-│   ├── services/        # Configuración de Firebase
-│   └── App.jsx          # Componente raíz
-│
-├── index.html           # Punto de entrada
-├── package.json         # Dependencias y scripts
-├── vite.config.js       # Configuración de Vite
-└── eslint.config.js     # Reglas de estilo y linting
-________________________________________
 ⚙️ Instalación y ejecución
 1.	Clonar el repositorio:
 2.	git clone https://github.com/JuanParraR14/ProyectoFinal-Parra-ReactJS.git
@@ -42,10 +26,6 @@ ________________________________________
 •	Widget de carrito en la barra de navegación.
 •	Gestión de órdenes y persistencia en base de datos.
 •	Navegación dinámica entre páginas con React Router.
-________________________________________
-📌 Estado del proyecto
-•	Últimos cambios: integración de Firebase y corrección del widget del carrito para hacerlo interactivo.
-•	Actualmente en fase final de entrega académica.
 ________________________________________
 👨‍💻 Autor
 Desarrollado por Juan Parra
