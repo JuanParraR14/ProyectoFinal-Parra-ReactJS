@@ -19,10 +19,10 @@ export default function navBar() {
             <div className="collapse navbar-collapse" id="navMenu">
                <ul className="navbar-nav me-auto">
                   <li className="nav-item">
-                  <NavLink to="/" className="nav-link">Inicio</NavLink>
+                  <NavLink to="/" className="nav-link text-light-emphasis">Inicio</NavLink>
                   </li>
                   <li className="nav-item dropdown">
-                     <a className="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                     <a className="nav-link text-light-emphasis dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                      Categorías
                      </a>
                      <ul className="dropdown-menu" aria-labelledby="categoriesDropdown">
@@ -36,7 +36,10 @@ export default function navBar() {
                      </ul>
                   </li>
                   <li className="nav-item">
-                     <NavLink to="/contact" className="nav-link">Contacto</NavLink>
+                     <NavLink to="/contact" className="nav-link text-light-emphasis">Contacto</NavLink>
+                  </li>
+                  <li className="nav-item">
+                     <NavLink to="/login" className="nav-link text-light-emphasis">Login</NavLink>
                   </li>
                </ul>
                <div className="d-flex align-items-center">
